@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.exo1.R
-import com.example.android.exo2.exo2
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         else { setTheme(app_color)}
         setContentView(R.layout.activity_main)
 
-        setEvent(btn3, exo2::class.java)
+        setEvent(btn3, Exo1::class.java)
 
 
     }

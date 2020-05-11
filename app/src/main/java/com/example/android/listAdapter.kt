@@ -1,4 +1,4 @@
-package com.example.android.exo2
+package com.example.android
 
 import android.app.Activity
 import android.content.Context
@@ -6,22 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
-import com.example.android.exo1.R
 
-class listAdapter (private var activity: Activity, private var items: ArrayList<Intervention>): BaseAdapter() {
+
+class listAdapter (private var activity: Activity, private var items: ArrayList<Word>): BaseAdapter() {
 
     private class ViewHolder(row: View?) {
-        var numero: TextView? = null
-        var date: TextView? = null
-        var nomPlombier: TextView? = null
-        var typeIntervention: TextView? = null
+        var engTxt: TextView? = null
+        var frTxt: TextView? = null
+        var img: ImageView? = null
+        var audio: ImageView? = null
 
         init {
-            this.numero = row?.findViewById<TextView>(R.id.numero)
-            this.date = row?.findViewById<TextView>(R.id.date)
-            this.nomPlombier = row?.findViewById<TextView>(R.id.nomPlombier)
-            this.typeIntervention = row?.findViewById<TextView>(R.id.typeIntervention)
+            this.engTxt= row?.findViewById(R.id.eng_text)
+            this.frTxt= row?.findViewById(R.id.fr_text)
+            this.img= row?.findViewById(R.id.image)
+            this.audio= row?.findViewById(R.id.play_audio)
+
         }
     }
 
@@ -39,15 +41,14 @@ class listAdapter (private var activity: Activity, private var items: ArrayList<
         }
 
         var userDto = items[position]
-        viewHolder.numero?.text = userDto.numero
-        viewHolder.date?.text = userDto.date
-        viewHolder.nomPlombier?.text = userDto.nomPlombier
-        viewHolder.typeIntervention?.text = userDto.typeIntervention
+        viewHolder.engTxt?.text = userDto.engTxt
+        viewHolder.frTxt?.text = userDto.frTxt
+        viewHolder.img?.setBackgroundResource(userDto.img)
 
         return view as View
     }
 
-    override fun getItem(i: Int): Intervention {
+    override fun getItem(i: Int): Word {
         return items[i]
     }
 
