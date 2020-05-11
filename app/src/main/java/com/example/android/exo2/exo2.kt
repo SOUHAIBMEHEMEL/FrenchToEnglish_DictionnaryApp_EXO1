@@ -7,14 +7,12 @@ import android.os.Bundle
 import android.widget.ListView
 import com.example.android.exo1.R
 import kotlinx.android.synthetic.main.exo2.*
-import android.util.JsonWriter
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.ajouter_intervention.*
 import java.io.*
 import java.util.*
-import kotlin.text.Typography.section
+
 
 
 class exo2 : AppCompatActivity() {
@@ -43,6 +41,7 @@ class exo2 : AppCompatActivity() {
         val day= c.get(Calendar.DAY_OF_MONTH)
         val monthValue=month+1
 
+        //lire les donnees du fichier
         result = readFile()
         result.sort()
 
@@ -51,7 +50,7 @@ class exo2 : AppCompatActivity() {
         listView?.adapter = adapter
         adapter?.notifyDataSetChanged()
 
-        setEvent(AjouterIntervention, com.example.android.exo2.AjouterIntervention::class.java)
+
 
         // Supprimer l'intervention cliquee
         listView.setOnItemClickListener { parent, view, position, id ->
@@ -72,6 +71,7 @@ class exo2 : AppCompatActivity() {
                 else{monthValue=""+(month1+1)}
 
                 if (dayOfMonth1<10){dayValue="0"+dayOfMonth1}
+                else{dayValue=""+dayOfMonth1}
 
                 val  day1 : String = ""+dayValue+"/"+monthValue+"/"+year1+""
                 Toast.makeText(this@exo2, day1,Toast.LENGTH_SHORT).show()
@@ -110,7 +110,6 @@ class exo2 : AppCompatActivity() {
         val interventions: ArrayList<Intervention> = iss.readObject() as ArrayList<Intervention>
         iss.close()
         fis.close()
-
         return interventions
     }
 
