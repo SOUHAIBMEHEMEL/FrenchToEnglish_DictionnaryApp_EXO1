@@ -16,10 +16,8 @@ class MainActivity : AppCompatActivity() {
         if(app_color==0){setTheme(R.style.AppTheme)}
         else { setTheme(app_color)}
         setContentView(R.layout.activity_main)
-
-        setEvent(btn3, Exo1::class.java)
-
-
+        setEvent(btn1, Exo1::class.java)
+        setEvent(btn2, Exo1_1::class.java)
     }
 
 

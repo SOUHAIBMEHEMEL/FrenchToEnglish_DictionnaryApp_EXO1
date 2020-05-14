@@ -1,9 +1,8 @@
 package com.example.android
 
-import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.ListView
-import android.widget.Button
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -12,6 +11,7 @@ import java.util.*
 class Exo1 : AppCompatActivity() {
 
     var result = ArrayList<Word>()
+    private var mp: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,24 +21,46 @@ class Exo1 : AppCompatActivity() {
         var listView: ListView?
         listView = findViewById(R.id.listView)
 
-        //lire les donnees du fichier
-        result.add(Word("One", "Un",R.drawable.number_one, R.raw.color_gray, -1))
-        result.add(Word("One", "Un",R.drawable.number_one, R.raw.color_gray, -1))
-        result.add(Word("One", "Un",R.drawable.number_one, R.raw.color_gray, -1))
-        result.add(Word("One", "Un",R.drawable.number_one, R.raw.color_gray, -1))
-        result.add(Word("One", "Un",R.drawable.number_one, R.raw.color_gray, -1))
+        //Ajouter les mots
+        result.add(Word("One", "Un",R.drawable.one, R.raw.one, -1))
+        result.add(Word("Two", "Deux",R.drawable.two, R.raw.two, -1))
+        result.add(Word("Three", "Trois",R.drawable.three, R.raw.three, -1))
+        result.add(Word("Four", "Quatre",R.drawable.four, R.raw.four, -1))
+        result.add(Word("Five", "Cinq",R.drawable.five, R.raw.five, -1))
 
-        var adapter = listAdapter(this, result)
+        var adapter = listAdapter(this, this, result)
         listView?.adapter = adapter
         adapter?.notifyDataSetChanged()
 
+        val img = findViewById<ImageView>(R.id.image)
+
+        // play audio
+        listView.setOnItemClickListener { parent, view, position, id ->
+            lireAudio(result[position].audio)
+            img.setImageResource(result[position].img)
+            Toast.makeText(this, "lecture audio", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
-    private fun setEvent(btn : Button, cls: Class<*>) {
-        btn.setOnClickListener({
-            val intent = Intent(this, cls)
-            startActivity(intent)
-        })
+    fun lireAudio(resId: Int) {
+        mp=null
+
+        if (mp == null) {        //set up MediaPlayer
+            mp = MediaPlayer.create(this, resId)
+
+            try {
+                mp!!.prepare()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+        if (!mp!!.isPlaying())
+            mp!!.start()
+        else
+            mp!!.pause()
     }
 
 }

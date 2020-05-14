@@ -10,34 +10,17 @@
             android:padding="10dp"
             android:orientation="horizontal">
 
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="2dp"
-                android:id="@+id/showCalendarBtn"
-                android:text="Filtrer"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="2dp"
-                android:id="@+id/AjouterIntervention"
-                android:text="Ajouter Intervention"/>
-
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/image"
+                android:layout_gravity="center_horizontal" />
     </LinearLayout>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/content"/>
 
     <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
     </ListView>
 
 </LinearLayout>

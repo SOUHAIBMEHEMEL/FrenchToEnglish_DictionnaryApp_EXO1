@@ -20,6 +20,7 @@
         </activity>
 
         <activity android:name="com.example.android.Exo1"></activity>
+        <activity android:name=".Exo1_1"></activity>
 
     </application>
 

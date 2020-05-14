@@ -2,28 +2,31 @@ package com.example.android
 
 import android.app.Activity
 import android.content.Context
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 
-class listAdapter (private var activity: Activity, private var items: ArrayList<Word>): BaseAdapter() {
+class listAdapter (private val _ctx: Context, private var activity: Activity, private var items: ArrayList<Word>): BaseAdapter() {
+
+    private var mp: MediaPlayer? = null
+    private var mc: MediaController? = null
 
     private class ViewHolder(row: View?) {
         var engTxt: TextView? = null
         var frTxt: TextView? = null
         var img: ImageView? = null
         var audio: ImageView? = null
+        var video: ImageView? = null
 
         init {
             this.engTxt= row?.findViewById(R.id.eng_text)
             this.frTxt= row?.findViewById(R.id.fr_text)
             this.img= row?.findViewById(R.id.image)
             this.audio= row?.findViewById(R.id.play_audio)
-
+            this.video= row?.findViewById(R.id.play_audio)
         }
     }
 
@@ -59,4 +62,5 @@ class listAdapter (private var activity: Activity, private var items: ArrayList<
     override fun getCount(): Int {
         return items.size
     }
+
 }

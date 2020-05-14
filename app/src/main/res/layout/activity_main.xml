@@ -9,12 +9,25 @@
         tools:context="com.example.android.MainActivity">
 
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:src="@drawable/logo"
+    />
+
 
     <Button
-            android:id="@+id/btn3"
+            android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="EXO 2"/>
+            android:layout_margin="45dp"
+            android:text="Apprendre avec audio"/>
+    <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="45dp"
+            android:text="Apprendre avec video"/>
 
 </LinearLayout>
